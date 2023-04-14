@@ -30,14 +30,16 @@ import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
 /**
- * The root interface in the <i>collection hierarchy</i>.  A collection
- * represents a group of objects, known as its <i>elements</i>.  Some
- * collections allow duplicate elements and others do not.  Some are ordered
- * and others unordered.  The JDK does not provide any <i>direct</i>
- * implementations of this interface: it provides implementations of more
- * specific subinterfaces like <tt>Set</tt> and <tt>List</tt>.  This interface
- * is typically used to pass collections around and manipulate them where
- * maximum generality is desired.
+ * 集合层次中的根接口. 集合表示一组对象，称为其元素.
+ * 一些集合允许重复元素，而另一些则不允许.
+ * 有些是有序的，有些是无序的.
+ * JDK不提供此接口的任何直接实现：它提供了更具体的子接口的实现，如Set和List
+ * 这个接口通常用于传递集合，并在需要最大通用性的地方对它们进行操作。
+ *
+ *
+ */
+
+/**
  *
  * <p><i>Bags</i> or <i>multisets</i> (unordered collections that may contain
  * duplicate elements) should implement this interface directly.
@@ -189,20 +191,15 @@ public interface Collection<E> extends Iterable<E> {
     Iterator<E> iterator();
 
     /**
-     * Returns an array containing all of the elements in this collection.
-     * If this collection makes any guarantees as to what order its elements
-     * are returned by its iterator, this method must return the elements in
-     * the same order.
+     * 返回一个数组，该数组包含此集合中的所有元素。如果这个集合保证迭代器返回元素的顺序，那么这个方法必须以相同的顺序返回元素。
      *
-     * <p>The returned array will be "safe" in that no references to it are
-     * maintained by this collection.  (In other words, this method must
-     * allocate a new array even if this collection is backed by an array).
-     * The caller is thus free to modify the returned array.
+     * 返回的数组将是“安全的”，因为此集合不维护对它的引用。（
+     * 换句话说，即使此集合由数组支持，此方法也必须分配一个新数组）。
+     * 因此，调用者可以自由修改返回的数组。
      *
-     * <p>This method acts as bridge between array-based and collection-based
-     * APIs.
+     * 此方法充当了基于数组和基于集合的API之间的桥梁。
      *
-     * @return an array containing all of the elements in this collection
+     * @return 包含此集合中所有元素的数组˙
      */
     Object[] toArray();
 
@@ -563,7 +560,7 @@ public interface Collection<E> extends Iterable<E> {
     }
 
     /**
-     * Returns a sequential {@code Stream} with this collection as its source.
+     * 返回以该集合为源的顺序流。
      *
      * <p>This method should be overridden when the {@link #spliterator()}
      * method cannot return a spliterator that is {@code IMMUTABLE},
@@ -582,8 +579,7 @@ public interface Collection<E> extends Iterable<E> {
     }
 
     /**
-     * Returns a possibly parallel {@code Stream} with this collection as its
-     * source.  It is allowable for this method to return a sequential stream.
+     * 返回一个可能与此集合并行的流作为其源。此方法可以返回一个顺序流。
      *
      * <p>This method should be overridden when the {@link #spliterator()}
      * method cannot return a spliterator that is {@code IMMUTABLE},
@@ -594,8 +590,7 @@ public interface Collection<E> extends Iterable<E> {
      * The default implementation creates a parallel {@code Stream} from the
      * collection's {@code Spliterator}.
      *
-     * @return a possibly parallel {@code Stream} over the elements in this
-     * collection
+     * @return 此集合中元素上可能存在的并行流
      * @since 1.8
      */
     default Stream<E> parallelStream() {
