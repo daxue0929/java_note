@@ -31,6 +31,11 @@ import sun.security.util.ManifestEntryVerifier;
 import sun.misc.JarIndex;
 
 /**
+ *
+ * JarInputStream类用于从任何输入流中读取JAR文件的内容。
+ * 它扩展了类java.util.zip.ZipInputStream，支持读取可选的Manifest条目。
+ * Manifest可以用于存储有关JAR文件及其条目的元信息。
+ *
  * The <code>JarInputStream</code> class is used to read the contents of
  * a JAR file from any input stream. It extends the class
  * <code>java.util.zip.ZipInputStream</code> with support for reading
