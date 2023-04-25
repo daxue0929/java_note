@@ -41,7 +41,7 @@ import java.util.stream.StreamSupport;
 
 
 /**
- * A compiled representation of a regular expression.
+ * 正则表达式的编译表示
  *
  * <p> A regular expression, specified as a string, must first be compiled into
  * an instance of this class.  The resulting pattern can then be used to create

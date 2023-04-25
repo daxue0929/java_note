@@ -775,6 +775,8 @@ public final class Integer extends Number implements Comparable<Integer> {
      * During VM initialization, java.lang.Integer.IntegerCache.high property
      * may be set and saved in the private system properties in the
      * sun.misc.VM class.
+     *
+     * 缓存在第一次使用时，初始化，可以通过参数  -XX:AutoBoxCacheMax=<size> 指定大小
      */
 
     private static class IntegerCache {
@@ -794,7 +796,7 @@ public final class Integer extends Number implements Comparable<Integer> {
                     // Maximum array size is Integer.MAX_VALUE
                     h = Math.min(i, Integer.MAX_VALUE - (-low) -1);
                 } catch( NumberFormatException nfe) {
-                    // If the property cannot be parsed into an int, ignore it.
+                    // 如果属性无法解析为int，忽略它
                 }
             }
             high = h;
@@ -804,7 +806,7 @@ public final class Integer extends Number implements Comparable<Integer> {
             for(int k = 0; k < cache.length; k++)
                 cache[k] = new Integer(j++);
 
-            // range [-128, 127] must be interned (JLS7 5.1.7)
+            // 断言保证high必须是大于等于127，要不然报错。 (JLS7 5.1.7)
             assert IntegerCache.high >= 127;
         }
 
@@ -825,6 +827,7 @@ public final class Integer extends Number implements Comparable<Integer> {
      * @param  i an {@code int} value.
      * @return an {@code Integer} instance representing {@code i}.
      * @since  1.5
+     * 缓存了-128 ～127的数据
      */
     public static Integer valueOf(int i) {
         if (i >= IntegerCache.low && i <= IntegerCache.high)

@@ -27,16 +27,13 @@ package java.util.function;
 import java.util.Objects;
 
 /**
- * Represents an operation that accepts two input arguments and returns no
- * result.  This is the two-arity specialization of {@link Consumer}.
- * Unlike most other functional interfaces, {@code BiConsumer} is expected
- * to operate via side-effects.
+ * 当一个方法只接受两个参数而且不返回任何东西时，那么可以考虑使用Biconsumer来实现
  *
  * <p>This is a <a href="package-summary.html">functional interface</a>
  * whose functional method is {@link #accept(Object, Object)}.
  *
- * @param <T> the type of the first argument to the operation
- * @param <U> the type of the second argument to the operation
+ * @param <T> 第一个参数类型
+ * @param <U> 第二个参数类型
  *
  * @see Consumer
  * @since 1.8
@@ -45,10 +42,10 @@ import java.util.Objects;
 public interface BiConsumer<T, U> {
 
     /**
-     * Performs this operation on the given arguments.
+     * 对给定的参数，执行此操作
      *
-     * @param t the first input argument
-     * @param u the second input argument
+     * @param t 第一个参数
+     * @param u 第二个参数
      */
     void accept(T t, U u);
 

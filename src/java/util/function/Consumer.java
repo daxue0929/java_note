@@ -42,9 +42,8 @@ import java.util.Objects;
 public interface Consumer<T> {
 
     /**
-     * Performs this operation on the given argument.
-     *
-     * @param t the input argument
+     * 对给定参数执行此操作
+     * @param t 输入参数
      */
     void accept(T t);
 
@@ -62,6 +61,9 @@ public interface Consumer<T> {
      */
     default Consumer<T> andThen(Consumer<? super T> after) {
         Objects.requireNonNull(after);
-        return (T t) -> { accept(t); after.accept(t); };
+        return (T t) -> {
+            accept(t);
+            after.accept(t);
+        };
     }
 }
